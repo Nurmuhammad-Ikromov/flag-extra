@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 
 import './App.css';
 import './components/CardItem/Card';
@@ -9,7 +8,7 @@ import Select from './components/Select/Select';
 import Header from './components/Header/Header';
 
 function App() {
-	const [countries, setCountries] = useState([
+	const countries = [
 		{
 			id: 1,
 			img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/2560px-Flag_of_Germany.svg.png',
@@ -73,10 +72,10 @@ function App() {
 			population: '40,400,000',
 			region: 'Africa',
 			capital: 'Algiers',
-		},
-	]);
+		}
+	];
 
-	setCountries(countries)
+
 
 	return (
 		<div className='App'>
