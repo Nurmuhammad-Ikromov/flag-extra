@@ -3,7 +3,7 @@ import './Card.css';
 function Card({ img, name, pop, reg, cap }) {
 	return (
 		<li className='card'>
-			<img width={264} height={160} src={img} />
+			<img width={264} height={160} src={img} alt="flags" />
 			<div className='card-body'>
 				<h3 className='card-name'> {name} </h3>
 				<p className='card-population'>

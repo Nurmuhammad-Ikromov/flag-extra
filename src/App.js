@@ -76,6 +76,7 @@ function App() {
 		},
 	]);
 
+	setCountries(countries)
 
 	return (
 		<div className='App'>
