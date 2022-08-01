@@ -1,0 +1,9 @@
+.state-list {
+
+    display: grid;
+    grid-template-columns: 264px 264px 264px 264px;
+    gap: 75px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

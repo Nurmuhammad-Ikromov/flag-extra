@@ -1,0 +1,30 @@
+.site-header{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0562443);
+    padding: 23px 0;
+  
+  }
+  
+  .site-header__inner {
+    display: flex;
+    justify-content: space-between;
+  
+  }
+  
+  .site-header__name {
+    font-size: 24px;
+    line-height: 33px;
+    color: #111517;
+    font-weight: 800;
+    margin: 0;
+  }
+  
+  .site-header__mode{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #111517;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+  }
