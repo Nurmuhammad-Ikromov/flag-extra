@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Loading from './animate.svg';
 import './App.css';
 import './components/CardItem/Card';
@@ -6,6 +7,7 @@ import Card from './components/CardItem/Card';
 import List from './components/CardList/List';
 import Select from './components/Select/Select';
 import Header from './components/Header/Header';
+import Singlepage from './pages/Singlepage/Singlepage';
 
 function App() {
 	const [countries, setCountries] = useState([]);
@@ -38,6 +40,7 @@ function App() {
 	const SearchCountries = (evt) => {
 		if (evt.code === 'Enter') {
 			setValue(evt.target.value);
+			evt.target.value = '';
 		}
 	};
 
@@ -48,27 +51,46 @@ function App() {
 	return (
 		<div className='App'>
 			<Header />
-			<Select
-				SearchCountries={SearchCountries}
-				ChangeSelect={ChangeSelect}
-			/>
 
 			<div className='container'>
-				
-				<List>
-					{countries.length
-						? countries.map((e) => (
-								<Card
-									key={+e.ccn3}
-									img={e.flags.png}
-									name={e.name.common}
-									pop={e.population}
-									reg={e.region}
-									cap={e.capital}
+				<Routes>
+					<Route
+						path='/'
+						element={
+							<div>
+								<Select
+									SearchCountries={SearchCountries}
+									ChangeSelect={ChangeSelect}
 								/>
-						  ))
-						: <img className='loading-io' src={Loading} width="203" height="203" alt="loading icon"  /> }
-				</List>
+
+								<List>
+									{countries.length ? (
+										countries.map((e) => (
+											<Card
+												key={+e.ccn3}
+												img={e.flags.png}
+												name={e.name.common}
+												pop={e.population}
+												reg={e.region}
+												cap={e.capital}
+											/>
+										))
+									) : (
+										<img
+											className='loading-io'
+											src={Loading}
+											width='203'
+											height='203'
+											alt='loading icon'
+										/>
+									)}
+								</List>
+							</div>
+						}
+					/>
+					<Route path='/:name' element={<Singlepage />} />
+					<Route path='/back' element={<Navigate to='/' />} />
+				</Routes>
 			</div>
 		</div>
 	);

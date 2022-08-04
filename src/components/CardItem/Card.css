@@ -1,3 +1,8 @@
+* {
+    color: #111517;
+
+}
+
 .card {
     text-align: start;
     background-color: #FFFFFF;
@@ -9,20 +14,21 @@
     padding: 24px 24px 46px 24px;
 }
 
-.card-name{
+.card-name {
     margin: 0;
     margin-bottom: 16px;
 }
-.card-population{
+
+.card-population {
     margin: 0;
     margin-bottom: 8px;
 }
 
-.card-region{
+.card-region {
     margin: 0;
     margin-bottom: 8px;
 }
 
-.card-capital{
+.card-capital {
     margin: 0;
 }

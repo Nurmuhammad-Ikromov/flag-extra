@@ -1,8 +1,9 @@
 import './Card.css';
+import { Link } from 'react-router-dom';
 
 function Card({ img, name, pop, reg, cap }) {
 	return (
-		<li className='card'>
+		<Link to={`/${name}`}  className='card' style={{textDecoration: "none", display:"inline-block"}}>
 			<img width={264} height={160} src={img} alt="flags" />
 			<div className='card-body'>
 				<h3 className='card-name'> {name} </h3>
@@ -14,7 +15,7 @@ function Card({ img, name, pop, reg, cap }) {
 
 				<p className='card-capital'> Capital: {cap}</p>
 			</div>
-		</li>
+		</Link>
 	);
 }
 
