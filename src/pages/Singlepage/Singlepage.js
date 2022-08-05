@@ -38,14 +38,14 @@ function Singlepage() {
 						backgroundColor: '#FFFFFF',
 						boxShadow: ' 0px 0px 4px 1px rgba(0, 0, 0, 0.104931)',
 						borderRadius: '2px',
-						border:"none",
-						padding: "5px 27px",
-						marginLeft: "10px",
+						border: 'none',
+						padding: '5px 27px',
+						marginLeft: '10px',
 						fontWeight: '300',
 						fontSize: '14px',
 						lineHeight: '19px',
 						color: '#111517',
-
+						cursor: 'pointer',
 					}}>
 					{' '}
 					{borderName}{' '}
@@ -238,24 +238,28 @@ function Singlepage() {
 										))}
 									</span>{' '}
 								</p>
+
+								
 							</div>
 						</div>
-
 						<p
-							style={{
-								fontWeight: '600',
-								fontSize: '16px',
-								lineHeight: '32px',
-								color: '#111517',
-								margin: '0',
-								marginTop: '70px',
-							}}>
-							Border Countries:{' '}
-							{e.borders.map((el) => (
-								<Borders borderName={el} />
-							))}
-						</p>
+									style={{
+										fontWeight: '600',
+										fontSize: '16px',
+										lineHeight: '32px',
+										color: '#111517',
+										margin: '0',
+										marginTop: '70px',
+									}}>
+									Border Countries:
+									{e.borders ?
+										e.borders.map((el) => (
+											<Borders borderName={el} />
+										)) : " none"}
+								</p>
 					</div>
+
+					
 				</div>
 			))}
 		</>
