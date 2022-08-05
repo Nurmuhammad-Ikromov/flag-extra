@@ -23,9 +23,40 @@ function Singlepage() {
 		}
 	});
 
+	function Languages({ lang }) {
+		return (
+			<>
+				<span>{lang} </span>
+			</>
+		);
+	}
+	function Borders({ borderName }) {
+		return (
+			<>
+				<button
+					style={{
+						backgroundColor: '#FFFFFF',
+						boxShadow: ' 0px 0px 4px 1px rgba(0, 0, 0, 0.104931)',
+						borderRadius: '2px',
+						border:"none",
+						padding: "5px 27px",
+						marginLeft: "10px",
+						fontWeight: '300',
+						fontSize: '14px',
+						lineHeight: '19px',
+						color: '#111517',
+
+					}}>
+					{' '}
+					{borderName}{' '}
+				</button>
+			</>
+		);
+	}
+
 	return (
 		<>
-			<Link to='/back' >
+			<Link to='/back'>
 				<button
 					style={{
 						fontWeight: '300',
@@ -35,11 +66,10 @@ function Singlepage() {
 						backgroundColor: '#FFFFFF',
 						boxShadow: ' 0px 0px 7px rgba(0, 0, 0, 0.293139)',
 						borderRadius: '6px',
-						margin:"80px 0",
-						padding: " 10px 30px",
-						border: "none",
-						cursor: "pointer"
-
+						margin: '80px 0',
+						padding: ' 10px 30px',
+						border: 'none',
+						cursor: 'pointer',
 					}}>
 					<svg
 						width='19'
@@ -203,11 +233,28 @@ function Singlepage() {
 										style={{
 											fontWeight: 'normal',
 										}}>
-										{[...array]}
+										{array.map((lan) => (
+											<Languages lang={lan} />
+										))}
 									</span>{' '}
 								</p>
 							</div>
 						</div>
+
+						<p
+							style={{
+								fontWeight: '600',
+								fontSize: '16px',
+								lineHeight: '32px',
+								color: '#111517',
+								margin: '0',
+								marginTop: '70px',
+							}}>
+							Border Countries:{' '}
+							{e.borders.map((el) => (
+								<Borders borderName={el} />
+							))}
+						</p>
 					</div>
 				</div>
 			))}
