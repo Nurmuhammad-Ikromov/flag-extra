@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { ThemeContext } from '../../context/ThemeContext/ThemeContext';
+import './Singlepage.css';
 function Singlepage() {
 	const params = useParams();
 	const [country, setCountry] = useState([]);
+	const { theme } = useContext(ThemeContext);
 
 	useEffect(() => {
 		fetch(`https://restcountries.com/v3.1/name/${params.name}`)
@@ -33,18 +36,16 @@ function Singlepage() {
 	function Borders({ borderName }) {
 		return (
 			<>
-				<button
+				<button id="border-btn"
+					className={theme}
 					style={{
-						backgroundColor: '#FFFFFF',
 						boxShadow: ' 0px 0px 4px 1px rgba(0, 0, 0, 0.104931)',
 						borderRadius: '2px',
 						border: 'none',
 						padding: '5px 27px',
 						marginLeft: '10px',
 						fontWeight: '300',
-						fontSize: '14px',
-						lineHeight: '19px',
-						color: '#111517',
+						
 						cursor: 'pointer',
 					}}>
 					{' '}
@@ -55,18 +56,16 @@ function Singlepage() {
 	}
 
 	return (
-		<>
+		<div id={theme} className='Single-page'>
 			<Link to='/back'>
 				<button
+					className={theme}
+					id='link-btn'
 					style={{
 						fontWeight: '300',
-						fontSize: '16px',
-						lineHeight: '20px',
-						color: '#111517',
-						backgroundColor: '#FFFFFF',
 						boxShadow: ' 0px 0px 7px rgba(0, 0, 0, 0.293139)',
 						borderRadius: '6px',
-						margin: '80px 0',
+
 						padding: ' 10px 30px',
 						border: 'none',
 						cursor: 'pointer',
@@ -89,8 +88,11 @@ function Singlepage() {
 			</Link>
 
 			{country.map((e) => (
-				<div style={{ display: 'flex', alignItems: 'center' }}>
+				<div
+					className='single-map'
+					style={{ display: 'flex', alignItems: 'center' }}>
 					<img
+						className='single-img'
 						width='560'
 						height='400'
 						src={e.flags.png}
@@ -103,27 +105,31 @@ function Singlepage() {
 						}}
 					/>
 
-					<div style={{ marginLeft: '120px' }}>
+					<div className='single-map-inner'>
 						<h2
+							className='single-title'
 							style={{
 								fontWeight: '800',
 								fontSize: '32px',
 								lineHeight: '44px',
-								color: '#111517',
+
 								margin: '0',
 								marginBottom: '23px',
 							}}>
 							{e.name.common}
 						</h2>
 
-						<div style={{ display: 'flex' }}>
-							<div style={{ marginRight: '140px' }}>
+						<div
+							className='single-infoBox'
+							// style={{ display: 'flex' }}
+							>
+							<div className='single-info-left'>
 								<p
 									style={{
 										fontWeight: '600',
 										fontSize: '16px',
 										lineHeight: '32px',
-										color: '#111517',
+
 										margin: '0',
 									}}>
 									Native Name:{' '}
@@ -136,7 +142,6 @@ function Singlepage() {
 										fontWeight: '600',
 										fontSize: '16px',
 										lineHeight: '32px',
-										color: '#111517',
 										margin: '0',
 									}}>
 									Population:{' '}
@@ -151,7 +156,6 @@ function Singlepage() {
 										fontWeight: '600',
 										fontSize: '16px',
 										lineHeight: '32px',
-										color: '#111517',
 										margin: '0',
 									}}>
 									{' '}
@@ -167,7 +171,6 @@ function Singlepage() {
 										fontWeight: '600',
 										fontSize: '16px',
 										lineHeight: '32px',
-										color: '#111517',
 										margin: '0',
 									}}>
 									Sub Region:{' '}
@@ -182,7 +185,6 @@ function Singlepage() {
 										fontWeight: '600',
 										fontSize: '16px',
 										lineHeight: '32px',
-										color: '#111517',
 										margin: '0',
 									}}>
 									{' '}
@@ -199,7 +201,6 @@ function Singlepage() {
 										fontWeight: '600',
 										fontSize: '16px',
 										lineHeight: '32px',
-										color: '#111517',
 										margin: '0',
 									}}>
 									Top Level Domain:{' '}
@@ -212,7 +213,6 @@ function Singlepage() {
 										fontWeight: '600',
 										fontSize: '16px',
 										lineHeight: '32px',
-										color: '#111517',
 										margin: '0',
 									}}>
 									Currencies:{' '}
@@ -225,7 +225,6 @@ function Singlepage() {
 										fontWeight: '600',
 										fontSize: '16px',
 										lineHeight: '32px',
-										color: '#111517',
 										margin: '0',
 									}}>
 									Languages:{' '}
@@ -238,31 +237,28 @@ function Singlepage() {
 										))}
 									</span>{' '}
 								</p>
-
-								
 							</div>
 						</div>
 						<p
-									style={{
-										fontWeight: '600',
-										fontSize: '16px',
-										lineHeight: '32px',
-										color: '#111517',
-										margin: '0',
-										marginTop: '70px',
-									}}>
-									Border Countries:
-									{e.borders ?
-										e.borders.map((el) => (
-											<Borders borderName={el} />
-										)) : " none"}
-								</p>
+							className='single-border'
+							style={{
+								fontWeight: '600',
+								fontSize: '16px',
+								lineHeight: '32px',
+							}}>
+							Border Countries:
+						</p>
+						<div className='borders'>
+							{e.borders
+								? e.borders.map((el) => (
+										<Borders borderName={el} />
+								  ))
+								: ' none'}
+						</div>
 					</div>
-
-					
 				</div>
 			))}
-		</>
+		</div>
 	);
 }
 

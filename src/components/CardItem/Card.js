@@ -1,12 +1,14 @@
 import './Card.css';
 import { Link } from 'react-router-dom';
-
+import { ThemeContext } from '../../context/ThemeContext/ThemeContext';
+import { useContext } from 'react';
 function Card({ img, name, pop, reg, cap }) {
+	const {theme} = useContext(ThemeContext)
 	return (
-		<li>
+		<li className='card-item'>
 			<Link
 				to={`/${name}`}
-				className='card'
+				className={`card ${theme}`}
 				style={{ textDecoration: 'none', display: 'inline-block' }}>
 				<img width={264} height={160} src={img} alt='flags' />
 				<div className='card-body'>

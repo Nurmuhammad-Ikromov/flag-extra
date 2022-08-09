@@ -8,12 +8,15 @@ import List from './components/CardList/List';
 import Select from './components/Select/Select';
 import Header from './components/Header/Header';
 import Singlepage from './pages/Singlepage/Singlepage';
+import { useContext } from 'react';
+import { ThemeContext } from './context/ThemeContext/ThemeContext';
+
 
 function App() {
 	const [countries, setCountries] = useState([]);
 	const [value, setValue] = useState([]);
 	const [select, setSelect] = useState([]);
-
+	const {theme} = useContext(ThemeContext)
 	useEffect(() => {
 		if (value.length) {
 			fetch(`https://restcountries.com/v3.1/name/${value}`)
@@ -49,7 +52,7 @@ function App() {
 	};
 
 	return (
-		<div className='App'>
+		<div id={theme} className="App">
 			<Header />
 
 			<div className='container'>

@@ -7,7 +7,15 @@
   height: 40vmin;
   pointer-events: none;
 }
+#dark {
+  background-color: #202C36;
+  color: #fff;
+}
+/* #dark li{
+  background-color: #2B3844;
+  color: #fff;
 
+} */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -39,7 +47,8 @@
 }
 
 .container{
-  width: 1320px;
+  max-width: 1320px;
+  width: 100%;
   padding: 0 20px;
   margin: 0 auto;
 }
